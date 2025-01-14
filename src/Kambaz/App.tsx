@@ -1,4 +1,3 @@
-import { HashRouter, Route, Routes, Navigate } from "react-router-dom";
 import Labs from "./Labs";
 import Kambaz from "./Kambaz";
 export default function App() {
