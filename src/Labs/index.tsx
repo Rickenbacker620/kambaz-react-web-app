@@ -8,12 +8,11 @@ export default function Labs() {
     <div id="wd-labs">
       <h1>Labs</h1>
       <TOC />
-      <p>Created by: Yicheng Xiao</p>
+      <p>Student name: Yicheng Xiao</p>
       <a
         id="wd-github"
         href="https://github.com/Rickenbacker620/kambaz-react-web-app"
         target="_blank"
-        rel="noopener noreferrer"
       >
         GitHub Repository
       </a>
