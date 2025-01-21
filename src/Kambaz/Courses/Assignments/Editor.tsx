@@ -125,11 +125,11 @@ export default function AssignmentEditor() {
           </tr>
       </table>
 
-      <div style={{ textAlign: "right" }}>
-        <button type="button" onClick={() => alert("Assignment Cancelled!")}>
+      <div>
+        <button type="button" >
           Cancel
         </button>
-        <button type="button" onClick={() => alert("Assignment Saved!")}>
+        <button type="button" >
           Save
         </button>
       </div>
