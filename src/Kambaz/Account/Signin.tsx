@@ -4,11 +4,7 @@ export default function Signin() {
     <div id="wd-signin-screen">
       <h3>Sign in</h3>
       <input className="wd-username" placeholder="username" /> <br />
-      <input
-        className="wd-password"
-        placeholder="password"
-        type="password"
-      />
+      <input className="wd-password" placeholder="password" type="password" />
       <br />
       <Link id="wd-signin-btn" to="/Kambaz/Dashboard">
         Sign in
