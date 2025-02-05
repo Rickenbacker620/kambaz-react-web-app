@@ -5,7 +5,8 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import { Route, Routes } from "react-router";
 import {FaAlignJustify} from "react-icons/fa";
-// import PeopleTable from "./People/Table.tsx";
+import PeopleTable from "./People/Table.tsx";
+
 export default function Courses() {
     return (
         <div id="wd-courses">
@@ -24,7 +25,7 @@ export default function Courses() {
                         <Route path="Modules" element={<Modules />} />
                         <Route path="Assignments" element={<Assignments />} />
                         <Route path="Assignments/:aid" element={<AssignmentEditor />} />
-                        {/* <Route path="People" element={<PeopleTable />} /> */}
+                        <Route path="People" element={<PeopleTable />} />
                     </Routes>
                 </div>
             </div>
