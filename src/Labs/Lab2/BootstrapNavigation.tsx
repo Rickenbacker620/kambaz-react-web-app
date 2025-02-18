@@ -30,9 +30,7 @@ export default function BootstrapNavigation() {
           <Card.Img variant="top" src="images/stacked.jpg" />
           <Card.Body>
             <Card.Title>Stacking Starship</Card.Title>
-            <Card.Text>
-              Stacking the most powerful rocket in history. Mars or bust!
-            </Card.Text>
+            <Card.Text>Stacking the most powerful rocket in history. Mars or bust!</Card.Text>
             <Button variant="primary">Boldly Go</Button>
           </Card.Body>
         </Card>

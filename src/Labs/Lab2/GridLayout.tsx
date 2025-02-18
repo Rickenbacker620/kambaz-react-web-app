@@ -30,10 +30,7 @@ export default function GridLayout() {
         </div>
         <div className="wd-grid-col-main-content wd-bg-color-blue wd-fg-color-white">
           <h3>Main content</h3>
-          <p>
-            This is the main content. This is the main content. This is the main
-            content.
-          </p>
+          <p>This is the main content. This is the main content. This is the main content.</p>
         </div>
         <div className="wd-grid-col-right-sidebar wd-bg-color-green wd-fg-color-white">
           <h3>Side bar</h3>

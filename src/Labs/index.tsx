@@ -9,18 +9,14 @@ export default function Labs() {
       <h1>Labs</h1>
       <TOC />
       <p>Student name: Yicheng Xiao</p>
-      <a
-        id="wd-github"
-        href="https://github.com/Rickenbacker620/kambaz-react-web-app"
-        target="_blank"
-      >
+      <a id="wd-github" href="https://github.com/Rickenbacker620/kambaz-react-web-app" target="_blank">
         GitHub Repository
       </a>
       <Routes>
         <Route path="/" element={<Navigate to="Lab1" />} />
         <Route path="Lab1" element={<Lab1 />} />
         <Route path="Lab2/*" element={<Lab2 />} />
-        <Route path="Lab3" element={<Lab3 />} />
+        <Route path="Lab3/*" element={<Lab3 />} />
       </Routes>
     </div>
   );

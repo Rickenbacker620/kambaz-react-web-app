@@ -1,13 +1,4 @@
-import {
-  Form,
-  FormGroup,
-  FormLabel,
-  FormControl,
-  FormSelect,
-  Row,
-  Col,
-  InputGroup,
-} from "react-bootstrap";
+import { Form, FormGroup, FormLabel, FormControl, FormSelect, Row, Col, InputGroup } from "react-bootstrap";
 import FormRange from "react-bootstrap/FormRange";
 import { Button } from "react-bootstrap";
 
@@ -36,18 +27,8 @@ export default function BootstrapForms() {
       </div>
       <div id="wd-css-styling-switches">
         <h3>Switches</h3>
-        <Form.Check
-          type="switch"
-          checked={false}
-          id="wd-switch-1"
-          label="Unchecked switch checkbox input"
-        />
-        <Form.Check
-          type="switch"
-          checked={true}
-          id="wd-switch-2"
-          label="Checked switch checkbox input"
-        />
+        <Form.Check type="switch" checked={false} id="wd-switch-1" label="Unchecked switch checkbox input" />
+        <Form.Check type="switch" checked={true} id="wd-switch-2" label="Checked switch checkbox input" />
         <Form.Check
           type="switch"
           checked={false}
@@ -148,22 +129,9 @@ export default function BootstrapForms() {
                   Radios{" "}
                 </Form.Label>
                 <Col sm={10}>
-                  <Form.Check
-                    type="radio"
-                    label="first radio"
-                    checked
-                    name="formHorizontalRadios"
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="second radio"
-                    name="formHorizontalRadios"
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="third radio"
-                    name="formHorizontalRadios"
-                  />
+                  <Form.Check type="radio" label="first radio" checked name="formHorizontalRadios" />
+                  <Form.Check type="radio" label="second radio" name="formHorizontalRadios" />
+                  <Form.Check type="radio" label="third radio" name="formHorizontalRadios" />
                 </Col>
               </Row>
             </Form.Group>

@@ -25,8 +25,7 @@ export default function AssignmentControls() {
         </Dropdown.Menu>
       </Dropdown>
 
-      <input className="form-control d-inline-block w-auto float-start" placeholder="Search for Assignments">
-      </input>
+      <input className="form-control d-inline-block w-auto float-start" placeholder="Search for Assignments"></input>
     </div>
   );
 }
