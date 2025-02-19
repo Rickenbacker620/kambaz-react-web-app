@@ -33,9 +33,10 @@ import PathParameters from "./PathParameters";
 import Spreading from "./Spreading";
 
 export default function Lab3() {
+  console.log("Hello world");
   return (
     <div id="wd-lab3">
-      <h2> Lab 3 HAHA</h2>
+      <h2> Lab 3</h2>
       <VariablesAndConstants />
       <VariableTypes />
       <BooleanVariable />
