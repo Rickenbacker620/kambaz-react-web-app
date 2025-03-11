@@ -103,8 +103,7 @@ export default function BootstrapForms() {
           <Form.Group className="mb-3">
             <Row>
               <Form.Label column sm={2}>
-                {" "}
-                Email{" "}
+                Email
               </Form.Label>
               <Col sm={10}>
                 <Form.Control type="email" placeholder="Email" />
@@ -114,8 +113,7 @@ export default function BootstrapForms() {
           <Form.Group className="mb-3">
             <Row>
               <Form.Label column sm={2}>
-                {" "}
-                Password{" "}
+                Password
               </Form.Label>
               <Col sm={10}>
                 <Form.Control type="password" placeholder="Password" />
@@ -126,7 +124,7 @@ export default function BootstrapForms() {
             <Form.Group className="mb-3">
               <Row>
                 <Form.Label as="legend" column sm={2}>
-                  Radios{" "}
+                  Radios
                 </Form.Label>
                 <Col sm={10}>
                   <Form.Check type="radio" label="first radio" checked name="formHorizontalRadios" />
