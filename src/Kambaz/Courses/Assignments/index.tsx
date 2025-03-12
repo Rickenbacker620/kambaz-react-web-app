@@ -1,20 +1,20 @@
 import { ListGroup, Button } from "react-bootstrap";
 import { BsFileEarmarkRichtext, BsGripVertical } from "react-icons/bs";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AssignmentControls from "./AssignmentControls";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import AssignmentControlButtons from "./AssignmentControlButtons";
 import assignments from "../../Database/assignments.json";
 
 export default function Assignments() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleAddAssignment = () => {
-    history.push("/Kambaz/Courses/Assignments/Editor");
+    navigate("/Kambaz/Courses/Assignments/Editor");
   };
 
   const handleEditAssignment = (assignmentId) => {
-    history.push(`/Kambaz/Courses/Assignments/Editor/${assignmentId}`);
+    navigate(`/Kambaz/Courses/Assignments/Editor/${assignmentId}`);
   };
 
   return (
