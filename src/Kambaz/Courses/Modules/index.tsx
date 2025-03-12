@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { ListGroup } from "react-bootstrap";
 import { BsGripVertical } from "react-icons/bs";
-import LessonControlButtons from "./LessonControlButtons";
 import ModuleControlButtons from "./ModuleControlButtons.tsx";
 import ModulesControls from "./ModulesControls";
 import { addModule, editModule, updateModule, deleteModule } from "./reducer";
@@ -66,7 +65,6 @@ export default function Modules() {
                         <div>
                           <BsGripVertical className="me-2 fs-3" /> {lesson.name}
                         </div>
-                        <LessonControlButtons />
                       </ListGroup.Item>
 
                       <ListGroup.Item className="wd-lessons p-3 ps-4">{lesson.description}</ListGroup.Item>

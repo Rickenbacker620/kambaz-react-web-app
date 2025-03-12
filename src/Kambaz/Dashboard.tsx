@@ -36,7 +36,7 @@ export default function Dashboard({
   const filteredCourses = showAllCourses
     ? courses
     : courses.filter((course) =>
-        enrollments.some((enrollment) => enrollment.user === currentUser._id && enrollment.course === course._id),
+        enrollments.some((enrollment:any) => enrollment.user === currentUser._id && enrollment.course === course._id),
       );
 
   const isStudent = currentUser.role === "STUDENT";
@@ -91,7 +91,7 @@ export default function Dashboard({
         <Row xs={1} md={5} className="g-4">
           {filteredCourses.map((course) => {
             const isEnrolled = enrollments.some(
-              (enrollment) => enrollment.user === currentUser._id && enrollment.course === course._id,
+              (enrollment:any) => enrollment.user === currentUser._id && enrollment.course === course._id,
             );
             return (
               <Col className="wd-dashboard-course" style={{ width: "300px" }}>

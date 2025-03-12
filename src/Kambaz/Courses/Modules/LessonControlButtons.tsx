@@ -3,15 +3,13 @@ import { FaTrash } from "react-icons/fa";
 import GreenCheckmark from "./GreenCheckmark";
 
 export default function LessonControlButtons({
-  lessonId,
   deleteLesson,
 }: {
-  lessonId: string;
-  deleteLesson: (lessonId: string) => void;
+  deleteLesson: () => void;
 }) {
   return (
     <div className="float-end d-flex align-items-center" style={{ paddingTop: "2px" }}>
-      <FaTrash className="text-danger me-2 mb-1" onClick={() => deleteLesson(lessonId)} />
+      <FaTrash className="text-danger me-2 mb-1" onClick={() => deleteLesson()} />
       <div style={{ marginTop: "-2px" }}>
         <GreenCheckmark />
       </div>
