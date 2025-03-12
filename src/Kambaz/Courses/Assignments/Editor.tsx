@@ -12,11 +12,11 @@ export default function AssignmentEditor() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState(assignment?.title || "");
-  const [description, setDescription] = useState(assignment?.description || "");
-  const [points, setPoints] = useState(assignment?.points || 100);
-  const [dueDate, setDueDate] = useState(assignment?.dueDate || "");
-  const [availableFrom, setAvailableFrom] = useState(assignment?.availableFrom || "");
-  const [availableUntil, setAvailableUntil] = useState(assignment?.availableUntil || "");
+  const [description, setDescription] = useState("");
+  const [points, setPoints] = useState(100);
+  const [dueDate, setDueDate] = useState("");
+  const [availableFrom, setAvailableFrom] = useState("");
+  const [availableUntil, setAvailableUntil] = useState("");
 
   if (!assignment) {
     return <h2 className="text-danger">Assignment not found</h2>;
@@ -67,7 +67,7 @@ export default function AssignmentEditor() {
             <Form.Control
               type="number"
               value={points}
-              onChange={(e) => setPoints(e.target.value)}
+              onChange={(e) => setPoints(parseInt(e.target.value))}
               className="w-50 ms-auto"
             />
           </Col>

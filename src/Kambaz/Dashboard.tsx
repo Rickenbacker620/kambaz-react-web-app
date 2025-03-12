@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Row, Col, Card, Button, Form, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import * as db from "./Database";
-import { enrollInCourse, unenrollFromCourse } from "./enrollmentActions"; // Import enrollment actions
+import { enrollInCourse, unenrollFromCourse } from "./Enrollment/reducer";
 import { useState } from "react";
 
 export default function Dashboard({
@@ -21,16 +20,16 @@ export default function Dashboard({
   updateCourse: () => void;
 }) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const { enrollments } = db;
+  const { enrollments } = useSelector((state: any) => state.enrollmentReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showAllCourses, setShowAllCourses] = useState(false);
 
   const handleEnrollToggle = (courseId: string, isEnrolled: boolean) => {
     if (isEnrolled) {
-      dispatch(unenrollFromCourse(currentUser._id, courseId));
+      dispatch(unenrollFromCourse({ user: currentUser._id, course: courseId }));
     } else {
-      dispatch(enrollInCourse(currentUser._id, courseId));
+      dispatch(enrollInCourse({ user: currentUser._id, course: courseId }));
     }
   };
 
