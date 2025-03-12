@@ -1,14 +1,26 @@
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, Button } from "react-bootstrap";
 import { BsFileEarmarkRichtext, BsGripVertical } from "react-icons/bs";
+import { useHistory } from "react-router-dom";
 import AssignmentControls from "./AssignmentControls";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import AssignmentControlButtons from "./AssignmentControlButtons";
 import assignments from "../../Database/assignments.json";
 
 export default function Assignments() {
+  const history = useHistory();
+
+  const handleAddAssignment = () => {
+    history.push("/Kambaz/Courses/Assignments/Editor");
+  };
+
+  const handleEditAssignment = (assignmentId) => {
+    history.push(`/Kambaz/Courses/Assignments/Editor/${assignmentId}`);
+  };
+
   return (
     <div>
       <AssignmentControls />
+      <Button onClick={handleAddAssignment}>+ Assignment</Button>
       <br />
       <br />
       <br />
@@ -21,7 +33,7 @@ export default function Assignments() {
 
           <ListGroup className="wd-lessons rounded-0">
             {assignments.map((assignment) => (
-              <ListGroup.Item key={assignment._id} className="wd-lesson p-3 ps-1">
+              <ListGroup.Item key={assignment._id} className="wd-lesson p-3 ps-1" onClick={() => handleEditAssignment(assignment._id)}>
                 <BsGripVertical className="me-2 fs-3" />
                 <BsFileEarmarkRichtext className="me-3" />
                 <a href={`#/Kambaz/Courses/${assignment.course}/Assignments/${assignment._id}`}>{assignment.title}</a>
