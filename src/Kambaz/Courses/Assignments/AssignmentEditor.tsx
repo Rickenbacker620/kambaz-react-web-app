@@ -18,7 +18,9 @@ export default function AssignmentEditor() {
 
   const handleSave = () => {
     if (existingAssignment) {
-      dispatch(updateAssignment({ _id: assignmentId, title, description, points, dueDate, availableFrom, availableUntil }));
+      dispatch(
+        updateAssignment({ _id: assignmentId, title, description, points, dueDate, availableFrom, availableUntil }),
+      );
     } else {
       dispatch(addAssignment({ title, description, points, dueDate, availableFrom, availableUntil }));
     }
@@ -52,7 +54,9 @@ export default function AssignmentEditor() {
           <label>Available Until</label>
           <input type="date" value={availableUntil} onChange={(e) => setAvailableUntil(e.target.value)} />
         </div>
-        <button type="button" onClick={handleSave}>Save</button>
+        <button type="button" onClick={handleSave}>
+          Save
+        </button>
       </form>
     </div>
   );

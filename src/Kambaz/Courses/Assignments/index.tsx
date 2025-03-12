@@ -33,7 +33,11 @@ export default function Assignments() {
 
           <ListGroup className="wd-lessons rounded-0">
             {assignments.map((assignment) => (
-              <ListGroup.Item key={assignment._id} className="wd-lesson p-3 ps-1" onClick={() => handleEditAssignment(assignment._id)}>
+              <ListGroup.Item
+                key={assignment._id}
+                className="wd-lesson p-3 ps-1"
+                onClick={() => handleEditAssignment(assignment._id)}
+              >
                 <BsGripVertical className="me-2 fs-3" />
                 <BsFileEarmarkRichtext className="me-3" />
                 <a href={`#/Kambaz/Courses/${assignment.course}/Assignments/${assignment._id}`}>{assignment.title}</a>
