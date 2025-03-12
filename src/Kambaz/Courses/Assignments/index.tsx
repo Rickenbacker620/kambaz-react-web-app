@@ -19,11 +19,6 @@ export default function Assignments() {
     console.log("Edit assignment", _id);
   }
 
-  function handleDeleteAssignment(_id: any): void {
-    setAssignmentToDelete(_id);
-    setShowDeleteModal(true);
-  }
-
   function confirmDeleteAssignment(): void {
     dispatch(deleteAssignment(assignmentToDelete));
     setShowDeleteModal(false);
@@ -57,7 +52,7 @@ export default function Assignments() {
                 <BsGripVertical className="me-2 fs-3" />
                 <BsFileEarmarkRichtext className="me-3" />
                 <a href={`#/Kambaz/Courses/${assignment.course}/Assignments/${assignment._id}`}>{assignment.title}</a>
-                <LessonControlButtons lessonId={assignment._id} deleteLesson={handleDeleteAssignment} />
+                <LessonControlButtons deleteLesson={() => dispatch(deleteAssignment(assignment._id))} />
                 <div className="ms-4 ps-2 text-secondary">
                   <span className="text-danger">Multiple Modules</span> | <b>Not available until</b> May 6 at 12am |
                   <b>Due</b> May 30 at 11:59pm | 100 pts
