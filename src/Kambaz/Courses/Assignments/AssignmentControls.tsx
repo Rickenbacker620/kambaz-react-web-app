@@ -1,11 +1,26 @@
 import { FaPlus } from "react-icons/fa6";
 import { Button, Dropdown } from "react-bootstrap";
 import GreenCheckmark from "../Modules/GreenCheckmark";
+import { useState } from "react";
+import AssignmentEditor from "./AssignmentEditor";
 
-export default function AssignmentControls() {
+export default function AssignmentControls({
+  assignmentName,
+  setAssignmentName,
+  addAssignment,
+}: {
+  assignmentName: string;
+  setAssignmentName: (title: string) => void;
+  addAssignment: () => void;
+}) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div id="wd-assignments-controls" className="text-nowrap">
-      <Button variant="danger" size="lg" className="me-1 float-end" id="wd-add-assignment-btn">
+      <Button variant="danger" size="lg" className="me-1 float-end" id="wd-add-assignment-btn" onClick={handleShow}>
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Assignment
       </Button>
@@ -26,6 +41,15 @@ export default function AssignmentControls() {
       </Dropdown>
 
       <input className="form-control d-inline-block w-auto float-start" placeholder="Search for Assignments"></input>
+
+      <AssignmentEditor
+        show={show}
+        handleClose={handleClose}
+        dialogTitle="Add Assignment"
+        assignmentName={assignmentName}
+        setAssignmentName={setAssignmentName}
+        addAssignment={addAssignment}
+      />
     </div>
   );
 }

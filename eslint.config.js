@@ -25,7 +25,7 @@ export default tseslint.config(
       ],
       'prefer-const': 'off',
       'no-var': 'off',
-      '@typescript-eslint/no-explicit-any': 'off', // Add this line to allow explicit any
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 )

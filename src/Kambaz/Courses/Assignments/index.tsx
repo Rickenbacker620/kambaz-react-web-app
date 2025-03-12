@@ -1,26 +1,42 @@
-import { ListGroup, Button } from "react-bootstrap";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ListGroup, Button, Modal } from "react-bootstrap";
 import { BsFileEarmarkRichtext, BsGripVertical } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
 import AssignmentControls from "./AssignmentControls";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import AssignmentControlButtons from "./AssignmentControlButtons";
-import assignments from "../../Database/assignments.json";
+import { deleteAssignment } from "./reducer";
 
 export default function Assignments() {
-  const navigate = useNavigate();
+  const [assignmentName, setAssignmentName] = useState("");
+  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+  const dispatch = useDispatch();
+  const [, setShowEditor] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [assignmentToDelete, setAssignmentToDelete] = useState(null);
 
-  const handleAddAssignment = () => {
-    navigate("/Kambaz/Courses/Assignments/Editor");
-  };
+  function handleEditAssignment(_id: any): void {
+    console.log("Edit assignment", _id);
+  }
 
-  const handleEditAssignment = (assignmentId) => {
-    navigate(`/Kambaz/Courses/Assignments/Editor/${assignmentId}`);
-  };
+  function handleDeleteAssignment(_id: any): void {
+    setAssignmentToDelete(_id);
+    setShowDeleteModal(true);
+  }
+
+  function confirmDeleteAssignment(): void {
+    dispatch(deleteAssignment(assignmentToDelete));
+    setShowDeleteModal(false);
+    setAssignmentToDelete(null);
+  }
 
   return (
     <div>
-      <AssignmentControls />
-      <Button onClick={handleAddAssignment}>+ Assignment</Button>
+      <AssignmentControls
+        setAssignmentName={setAssignmentName}
+        assignmentName={assignmentName}
+        addAssignment={() => setShowEditor(true)}
+      />
       <br />
       <br />
       <br />
@@ -32,7 +48,7 @@ export default function Assignments() {
           </div>
 
           <ListGroup className="wd-lessons rounded-0">
-            {assignments.map((assignment) => (
+            {assignments.map((assignment: any) => (
               <ListGroup.Item
                 key={assignment._id}
                 className="wd-lesson p-3 ps-1"
@@ -41,7 +57,7 @@ export default function Assignments() {
                 <BsGripVertical className="me-2 fs-3" />
                 <BsFileEarmarkRichtext className="me-3" />
                 <a href={`#/Kambaz/Courses/${assignment.course}/Assignments/${assignment._id}`}>{assignment.title}</a>
-                <LessonControlButtons />
+                <LessonControlButtons lessonId={assignment._id} deleteLesson={handleDeleteAssignment} />
                 <div className="ms-4 ps-2 text-secondary">
                   <span className="text-danger">Multiple Modules</span> | <b>Not available until</b> May 6 at 12am |
                   <b>Due</b> May 30 at 11:59pm | 100 pts
@@ -51,6 +67,21 @@ export default function Assignments() {
           </ListGroup>
         </ListGroup.Item>
       </ListGroup>
+
+      <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Delete</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this assignment?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={confirmDeleteAssignment}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

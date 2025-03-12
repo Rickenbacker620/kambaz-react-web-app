@@ -13,9 +13,12 @@ const assignmentsSlice = createSlice({
     addAssignment: (state, { payload: assignment }) => {
       const newAssignment: any = {
         _id: uuidv4(),
-        title: assignment.title,
+        title: assignment.name,
         description: assignment.description,
+        points: assignment.points,
         dueDate: assignment.dueDate,
+        availableFrom: assignment.availableFrom,
+        availableUntil: assignment.availableUntil,
         course: assignment.course,
       };
       state.assignments = [...state.assignments, newAssignment] as any;
