@@ -33,12 +33,6 @@ export default function Dashboard({
     }
   };
 
-  const filteredCourses = showAllCourses
-    ? courses
-    : courses.filter((course) =>
-        enrollments.some((enrollment:any) => enrollment.user === currentUser._id && enrollment.course === course._id),
-      );
-
   const isStudent = currentUser.role === "STUDENT";
 
   return (
@@ -86,15 +80,15 @@ export default function Dashboard({
         </>
       )}
       <hr />
-      <h2 id="wd-dashboard-published">Published Courses ({filteredCourses.length})</h2> <hr />
+      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
-          {filteredCourses.map((course) => {
+          {courses.map((course) => {
             const isEnrolled = enrollments.some(
-              (enrollment:any) => enrollment.user === currentUser._id && enrollment.course === course._id,
+              (enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id,
             );
             return (
-              <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+              <Col key={course._id} className="wd-dashboard-course" style={{ width: "300px" }}>
                 <Card>
                   <Link
                     to={isEnrolled ? `/Kambaz/Courses/${course._id}/Home` : "#"}

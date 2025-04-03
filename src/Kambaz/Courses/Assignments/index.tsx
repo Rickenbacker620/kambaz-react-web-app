@@ -6,6 +6,7 @@ import AssignmentControls from "./AssignmentControls";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import AssignmentControlButtons from "./AssignmentControlButtons";
 import { deleteAssignment } from "./reducer";
+import * as assignmentsClient from "./client";
 
 export default function Assignments() {
   const [assignmentName, setAssignmentName] = useState("");
@@ -15,11 +16,13 @@ export default function Assignments() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [assignmentToDelete, setAssignmentToDelete] = useState(null);
 
-  function handleEditAssignment(_id: any): void {
-    console.log("Edit assignment", _id);
+  async function handleEditAssignment(_id: any) {
+
   }
 
-  function confirmDeleteAssignment(): void {
+  async function deleteLesson(assignmentId: string) {
+    await assignmentsClient.deleteAssignment(assignmentToDelete);
+    
     dispatch(deleteAssignment(assignmentToDelete));
     setShowDeleteModal(false);
     setAssignmentToDelete(null);
@@ -52,7 +55,8 @@ export default function Assignments() {
                 <BsGripVertical className="me-2 fs-3" />
                 <BsFileEarmarkRichtext className="me-3" />
                 <a href={`#/Kambaz/Courses/${assignment.course}/Assignments/${assignment._id}`}>{assignment.title}</a>
-                <LessonControlButtons deleteLesson={() => dispatch(deleteAssignment(assignment._id))} />
+                {/* <LessonControlButtons deleteLesson={() => dispatch(deleteAssignment(assignment._id))} /> */}
+                <LessonControlButtons deleteLesson={() => deleteLesson()} />
                 <div className="ms-4 ps-2 text-secondary">
                   <span className="text-danger">Multiple Modules</span> | <b>Not available until</b> May 6 at 12am |
                   <b>Due</b> May 30 at 11:59pm | 100 pts
@@ -63,7 +67,7 @@ export default function Assignments() {
         </ListGroup.Item>
       </ListGroup>
 
-      <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+      {/* <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Confirm Delete</Modal.Title>
         </Modal.Header>
@@ -76,7 +80,8 @@ export default function Assignments() {
             Delete
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </div>
   );
 }
+

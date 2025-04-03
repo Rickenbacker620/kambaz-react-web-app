@@ -4,6 +4,7 @@ import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { updateAssignment } from "./reducer";
 import { useState } from "react";
+import * as assignmentClient from "./client";
 
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
@@ -22,7 +23,7 @@ export default function AssignmentEditor() {
     return <h2 className="text-danger">Assignment not found</h2>;
   }
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     const updatedAssignment = {
       ...assignment,
@@ -33,6 +34,7 @@ export default function AssignmentEditor() {
       availableFrom,
       availableUntil,
     };
+    await assignmentClient.updateAssignment(updatedAssignment);
     dispatch(updateAssignment(updatedAssignment));
     navigate(`/Kambaz/Courses/${cid}/Assignments`);
   };

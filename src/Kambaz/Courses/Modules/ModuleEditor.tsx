@@ -32,7 +32,13 @@ export default function ModuleEditor({
         <Button variant="secondary" onClick={handleClose}>
           Cancel
         </Button>
-        <Button variant="danger" onClick={addModule}>
+        <Button
+          variant="danger"
+          onClick={() => {
+            addModule();
+            handleClose();
+          }}
+        >
           Add Module
         </Button>
       </Modal.Footer>
