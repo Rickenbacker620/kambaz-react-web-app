@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Row, Col, Card, Button, Form, Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { enrollInCourse, unenrollFromCourse } from "./Enrollment/reducer";
+import { addEnrollment, deleteEnrollment } from "./Enrollment/reducer";
 import { useState } from "react";
+import * as enrollmentClient from "./Enrollment/client";
 
 export default function Dashboard({
   courses,
@@ -25,11 +26,13 @@ export default function Dashboard({
   const navigate = useNavigate();
   const [showAllCourses, setShowAllCourses] = useState(false);
 
-  const handleEnrollToggle = (courseId: string, isEnrolled: boolean) => {
+  const handleEnrollToggle = async (courseId: string, isEnrolled: boolean) => {
     if (isEnrolled) {
-      dispatch(unenrollFromCourse({ user: currentUser._id, course: courseId }));
+      await enrollmentClient.createEnrollment(currentUser._id, courseId);
+      dispatch(addEnrollment({ user: currentUser._id, course: courseId }));
     } else {
-      dispatch(enrollInCourse({ user: currentUser._id, course: courseId }));
+      await enrollmentClient.deleteEnrollment(currentUser._id, courseId);
+      dispatch(deleteEnrollment({ user: currentUser._id, course: courseId }));
     }
   };
 
