@@ -94,14 +94,8 @@ export default function Dashboard({
               <Col key={course._id} className="wd-dashboard-course" style={{ width: "300px" }}>
                 <Card>
                   <Link
-                    to={isEnrolled ? `/Kambaz/Courses/${course._id}/Home` : "#"}
+                    to={`/Kambaz/Courses/${course._id}/Home`}
                     className="wd-dashboard-course-link text-decoration-none text-dark"
-                    onClick={(e) => {
-                      if (!isEnrolled) {
-                        e.preventDefault();
-                        navigate("/Kambaz/Dashboard");
-                      }
-                    }}
                   >
                     <Card.Img variant="top" src={course.image || "/images/reactjs.jpg"} height={160} />
                     <Card.Body>
@@ -124,7 +118,13 @@ export default function Dashboard({
                       )}
                       {!isStudent && (
                         <>
-                          <Button variant="primary">Go</Button>
+                          <Button variant="primary" onClick={
+                            (event) => {
+                              event.preventDefault();
+                              navigate(`/Kambaz/Courses/${course._id}/Home`);
+                            }
+                          } className="float-end" id="wd-go-course-click" style={{ marginLeft: "5px" }
+                          }>Go</Button>
                           <Button
                             variant="warning"
                             onClick={(event) => {
