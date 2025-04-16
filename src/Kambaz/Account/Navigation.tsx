@@ -1,40 +1,26 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 export default function AccountNavigation() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const links = currentUser ? ["Profile"] : ["Signin", "Signup"];
   const { pathname } = useLocation();
+  const active = (path: string) => (pathname.includes(path) ? "active" : "");
 
-  return (
-    <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
-      {links.includes("Signin") && (
-        <Link
-          to="/Kambaz/Account/Signin"
-          id="wd-course-home-link"
-          className={`list-group-item ${pathname === "/Kambaz/Account/Signin" ? "active" : ""} border border-0`}
-        >
-          Signin
-        </Link>
-      )}
-      {links.includes("Signup") && (
-        <Link
-          to="/Kambaz/Account/Signup"
-          id="wd-course-modules-link"
-          className={`list-group-item text-danger ${pathname === "/Kambaz/Account/Signup" ? "active" : ""} border border-0`}
-        >
-          Signup
-        </Link>
-      )}
-      {links.includes("Profile") && (
-        <Link
-          to="/Kambaz/Account/Profile"
-          id="wd-course-piazza-link"
-          className={`list-group-item text-danger ${pathname === "/Kambaz/Account/Profile" ? "active" : ""} border border-0`}
-        >
-          Profile
+  return links.map((link) => (
+    <div id="wd-courses-navigation" className="wd list-group fs-5 me-5 rounded-0">
+      <Link to={`/Kambaz/Account/${link}`} className={`list-group-item ${active(link)} border border-0`}>
+        {" "}
+        {link}{" "}
+      </Link>{" "}
+      <br />
+      {currentUser && currentUser.role === "ADMIN" && (
+        <Link to={`/Kambaz/Account/Users`} className={`list-group-item ${active("Users")} border border-0`}>
+          {" "}
+          Users{" "}
         </Link>
       )}
     </div>
-  );
+  ));
 }

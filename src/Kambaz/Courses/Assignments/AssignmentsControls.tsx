@@ -1,51 +1,38 @@
-import { Button, FormControl, InputGroup } from "react-bootstrap";
-import { FaSearch } from "react-icons/fa";
-import { BsPlus } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router";
-export default function AssignmentsControls({
-  isFaculty,
-}: {
-  isFaculty: boolean;
-}) {
+import { FaPlus } from "react-icons/fa6";
+import { CiSearch } from "react-icons/ci";
+import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { v4 as uuidv4 } from "uuid";
+import { useNavigate, useParams } from "react-router";
+import FacultyProtected from "../../Account/FacultyProtected";
+
+export default function AssignmentsControls() {
   const { cid } = useParams();
   const navigate = useNavigate();
-  return (
-    <div
-      id="wd-assignments-controls"
-      className="d-flex justify-content-between align-items-center mb-3"
-    >
-      <InputGroup style={{ maxWidth: "300px" }}>
-        <InputGroup.Text className="bg-light border-secondary">
-          <FaSearch />
-        </InputGroup.Text>
-        <FormControl
-          placeholder="Search..."
-          aria-label="Search for Assignments"
-          id="wd-search-assignment"
-          className="border-secondary"
-        />
-      </InputGroup>
-      {isFaculty && (
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <Button
-            variant="outline-secondary"
-            className="me-2 d-flex align-items-center px-3"
-            id="wd-add-assignment-group"
-          >
-            <BsPlus className="position-relative me-2" /> Group
-          </Button>
 
+  return (
+    <div id="wd-assignments-controls" className="text-nowrap">
+      <FormGroup className="me-1 float-start position-relative d-flex align-items-center" id="wd-add-module-btn">
+        <CiSearch className="position-absolute ms-3 text-secondary" size={25} />
+        <FormControl type="text" size="lg" placeholder="Search..." className="w-auto ps-5 py-2" />
+      </FormGroup>
+      <div>
+        <FacultyProtected>
           <Button
+            onClick={() => navigate(`/Kambaz/Courses/${cid}/Assignments/${uuidv4()}`)}
             variant="danger"
-            className="d-flex align-items-center px-3"
-            id="wd-add-assignment"
-            onClick={() => navigate(`/Kambaz/Courses/${cid}/Assignments/new`)}
+            size="lg"
+            className="me-1 float-end"
+            id="wd-add-module-btn"
           >
-            <BsPlus className="position-relative me-2" /> Assignment
+            <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+            Assignment
           </Button>
-        </div>
-      )}
+        </FacultyProtected>
+        <Button variant="secondary" size="lg" className="me-1 float-end" id="wd-add-module-btn">
+          <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+          Group
+        </Button>
+      </div>
     </div>
   );
 }

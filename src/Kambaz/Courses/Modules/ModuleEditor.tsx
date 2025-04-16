@@ -1,5 +1,4 @@
-import { Modal, Button } from "react-bootstrap";
-
+import { Modal, FormControl, Button } from "react-bootstrap";
 export default function ModuleEditor({
   show,
   handleClose,
@@ -16,21 +15,22 @@ export default function ModuleEditor({
   addModule: () => void;
 }) {
   return (
-    <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+    <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{dialogTitle}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <input
-          className="form-control"
-          defaultValue={moduleName}
-          placeholder="Module Name"
-          onChange={(e) => setModuleName(e.target.value)}
+        <FormControl
+          value={moduleName}
+          onChange={(e) => {
+            setModuleName(e.target.value);
+          }}
         />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>
-          Cancel
+          {" "}
+          Cancel{" "}
         </Button>
         <Button
           variant="danger"
@@ -39,7 +39,8 @@ export default function ModuleEditor({
             handleClose();
           }}
         >
-          Add Module
+          {" "}
+          Add Module{" "}
         </Button>
       </Modal.Footer>
     </Modal>

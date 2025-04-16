@@ -2,12 +2,11 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
 import { LiaFileImportSolid } from "react-icons/lia";
+import { IoMdHome } from "react-icons/io";
+import { RiBarChart2Fill } from "react-icons/ri";
+import { TfiAnnouncement } from "react-icons/tfi";
+import { BsBellFill } from "react-icons/bs";
 import { Button } from "react-bootstrap";
-import { AiFillHome } from "react-icons/ai";
-import { BsGraphUp } from "react-icons/bs";
-import { FaBullhorn } from "react-icons/fa";
-import { FaChartBar } from "react-icons/fa";
-import { FaBell } from "react-icons/fa";
 
 export default function CourseStatus() {
   return (
@@ -15,17 +14,16 @@ export default function CourseStatus() {
       <h2>Course Status</h2>
       <div className="d-flex">
         <div className="w-50 pe-1">
-          <Button variant="secondary" size="lg" className="w-100 text-nowrap">
-            <MdDoNotDisturbAlt className="me-2 fs-5" /> Unpublish
-          </Button>
+          <Button variant="secondary" size="lg" className="w-100 text-nowrap ">
+            <MdDoNotDisturbAlt className="me-2 fs-5" /> Unpublish{" "}
+          </Button>{" "}
         </div>
         <div className="w-50">
           <Button variant="success" size="lg" className="w-100">
-            <FaCheckCircle className="me-2 fs-5" /> Publish
-          </Button>
+            <FaCheckCircle className="me-2 fs-5" /> Publish{" "}
+          </Button>{" "}
         </div>
       </div>
-
       <br />
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
         <BiImport className="me-2 fs-5" /> Import Existing Content
@@ -34,22 +32,19 @@ export default function CourseStatus() {
         <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <AiFillHome className="me-2 fs-5" /> Choose Home Page
+        <IoMdHome className="me-2 fs-5" /> Choose Home Page
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <BsGraphUp className="me-2 fs-5" /> View Course Stream
+        <RiBarChart2Fill className="me-2 fs-5" /> View Course Screen
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <FaBullhorn className="me-2 fs-5" /> New Announcement
+        <TfiAnnouncement className="me-2 fs-5" /> New Announcement
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <FaChartBar className="me-2 fs-5" /> New Analytics
+        <RiBarChart2Fill className="me-2 fs-5" /> New Analytics
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <FaCheckCircle className="me-2 fs-5" /> Publish
-      </Button>
-      <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <FaBell className="me-2 fs-5" /> View Course Notifications
+        <BsBellFill className="me-2 fs-5" /> View Course Notification
       </Button>
     </div>
   );

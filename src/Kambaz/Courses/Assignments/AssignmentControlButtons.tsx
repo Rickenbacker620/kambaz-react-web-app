@@ -1,24 +1,10 @@
 import { IoEllipsisVertical } from "react-icons/io5";
-import { FaTrash } from "react-icons/fa";
-import GreenCheckmark from "./GreenCheckmark";
-export default function AssignmentControlButtons({
-  assignmentId,
-  deleteAssignment,
-  isFaculty,
-}: {
-  assignmentId: string;
-  deleteAssignment: (assignmentId: string) => void;
-  isFaculty: boolean;
-}) {
+import { BsPlus } from "react-icons/bs";
+export default function AssignmentControlButtons() {
   return (
     <div className="float-end">
-      <GreenCheckmark />
-      {isFaculty && (
-        <FaTrash
-          onClick={() => deleteAssignment(assignmentId)}
-          className="text-danger me-3"
-        />
-      )}
+      <span className="border border-black border-secondary rounded-pill px-2 py-2 mx-2">40% of Total</span>
+      <BsPlus className="fs-2" />
       <IoEllipsisVertical className="fs-4" />
     </div>
   );

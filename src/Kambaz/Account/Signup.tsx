@@ -1,15 +1,14 @@
-import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Container, Form, Button } from "react-bootstrap";
-import * as client from "./client";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { FormControl } from "react-bootstrap";
 import { setCurrentUser } from "./reducer";
+import * as client from "./client";
 
 export default function Signup() {
   const [user, setUser] = useState<any>({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const signup = async () => {
     const currentUser = await client.signup(user);
     dispatch(setCurrentUser(currentUser));
@@ -17,40 +16,29 @@ export default function Signup() {
   };
 
   return (
-    <Container className="wd-signup-screen mt-4">
+    <div className="wd-signup-screen">
       <h1>Sign up</h1>
-      <Form>
-        <Form.Group className="mb-2 wd-username">
-          <Form.Control
-            value={user.username}
-            onChange={(e) => setUser({ ...user, username: e.target.value })}
-            placeholder="username"
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-2 wd-password">
-          <Form.Control
-            value={user.password}
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
-            type="password"
-            placeholder="password"
-          />
-        </Form.Group>
-
-        <Button
-          onClick={signup}
-          className="wd-signup-btn w-100 mb-2"
-          variant="primary"
-        >
-          Sign up
-        </Button>
-
-        <div>
-          <Link to="/Kambaz/Account/Signin" className="wd-signin-link">
-            Sign in
-          </Link>
-        </div>
-      </Form>
-    </Container>
+      <FormControl
+        value={user.username}
+        onChange={(e) => setUser({ ...user, username: e.target.value })}
+        className="wd-username mb-2"
+        placeholder="username"
+      />
+      <FormControl
+        value={user.password}
+        onChange={(e) => setUser({ ...user, password: e.target.value })}
+        className="wd-password mb-2"
+        placeholder="password"
+        type="password"
+      />
+      <button onClick={signup} className="wd-signup-btn btn btn-primary mb-2 w-100">
+        {" "}
+        Sign up{" "}
+      </button>
+      <br />
+      <Link to="/Kambaz/Account/Signin" className="wd-signin-link">
+        Sign in
+      </Link>
+    </div>
   );
 }
