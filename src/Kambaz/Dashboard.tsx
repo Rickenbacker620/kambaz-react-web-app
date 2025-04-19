@@ -13,7 +13,7 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   const [curCourse, setCurCourse] = useState<any>({
-    _id: "0",
+    _id: "99",
     name: "New Course",
     number: "New Number",
     startDate: "2023-09-10",
